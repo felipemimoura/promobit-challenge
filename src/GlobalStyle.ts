@@ -3,9 +3,10 @@ import { createGlobalStyle } from 'styled-components'
 export const GlobalStyle = createGlobalStyle`
     :root{
         --maxWidth: 1280px;
-        -white-space: #fff;
+        --white: #fff;
         --lightGray: #eeeeee;
         --medGrey: #353535;
+        --darkGrey: #1c1c1c;
         --title: 2.4rem;
         --subtitle: 1.6rem;
         --normal: 1rem;
@@ -18,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
 
     * {
         box-sizing: border-box;
-        font-size: 'Roboto', sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
     body {
@@ -27,7 +28,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h1 {
-        font-size: var(---title);
+        font-size: var(--title);
         font-weight: 600;
         color: var(--white)
     }
@@ -35,10 +36,11 @@ export const GlobalStyle = createGlobalStyle`
     h3 {
         font-size: var(---subtitle);
         font-weight: 600;
+        color: var(--white);
     }
 
     p {
-        font-size: var(---normal);
+        font-size: var(--normal);
         color: var(--white)
     }
 
