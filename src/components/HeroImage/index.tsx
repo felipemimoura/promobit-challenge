@@ -4,9 +4,7 @@ import { HeroImageProps } from './interface'
 import * as Styled from './styles'
 
 export const HeroImage: React.FC<HeroImageProps> = ({ title, description, imageUrl }) => {
-    const urlImage = `${IMAGE_BASE_URL}${BACKDROP_SIZE}${imageUrl}`
-
-
+    const urlImage = `${IMAGE_BASE_URL}/${BACKDROP_SIZE}${imageUrl}`
     return (
         <Styled.Wrapper imageUrl={urlImage}>
             <Styled.Content>
