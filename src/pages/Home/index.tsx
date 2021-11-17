@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import { Grid } from '../../components/Grid'
 import { HeroImage } from '../../components/HeroImage'
-
 import { useMovies } from '../../contexts/getMovies'
 import { FirstMovieProps } from './interface'
+
 
 export const Home: React.FC = () => {
     const { movies } = useMovies()
     const [firstMovie, setFirstMovie] = useState<FirstMovieProps>({} as FirstMovieProps)
+    // 
 
     useEffect(() => {
         if (!movies[0]) {
@@ -22,8 +24,10 @@ export const Home: React.FC = () => {
     }, [movies])
     return (
         <div>
-            {firstMovie && <HeroImage description={firstMovie.description} title={firstMovie.title} imageUrl={firstMovie.imageUrl} />}
+            {firstMovie && <HeroImage description={firstMovie.description} title={firstMovie.title} imageUrl={`${firstMovie.imageUrl}`} />}
+            <Grid header="Filmes Populares" >
 
+            </Grid>
         </div>
     )
 }
