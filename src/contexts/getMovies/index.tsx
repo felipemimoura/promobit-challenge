@@ -10,9 +10,12 @@ const MoviesProvider: React.FC = ({ children }) => {
 
     const fetchMovies = useCallback(async () => {
         const result = await getPopularMovies()
-        setMoviesData(prev => ({
-            ...result.results, result: result.page > 1 ? [...prev, ...result.results] : [result.results]
-        }))
+        if (result.page > 1) {
+            setMoviesData(state => [...state, ...result.results])
+            return
+        }
+        setMoviesData(result.results)
+
     }, [])
 
     useEffect(() => {
