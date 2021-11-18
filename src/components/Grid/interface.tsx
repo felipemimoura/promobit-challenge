@@ -7,4 +7,5 @@ export interface Movie {
 
 export interface GridProps {
     header: string
+    categorySelect: number
 }
