@@ -1,12 +1,14 @@
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { getCategories } from "../../services/controllers/getCategories";
 import { getPopularMovies } from '../../services/controllers/getMovies';
-import { Movie, MovieContext } from "./interface";
+import { Categories, Movie, MovieContext } from "./interface";
 
 const MoviesContext = createContext<MovieContext>({} as MovieContext)
 
 
 const MoviesProvider: React.FC = ({ children }) => {
     const [moviesData, setMoviesData] = useState<Movie[]>([])
+    const [categoriesData, setCategoriesData] = useState<Categories[]>([])
 
     const fetchMovies = useCallback(async () => {
         const result = await getPopularMovies()
@@ -18,12 +20,18 @@ const MoviesProvider: React.FC = ({ children }) => {
 
     }, [])
 
+    const featchCategories = useCallback(async () => {
+        const result = await getCategories()
+        setCategoriesData(result.genres)
+    }, [])
+
     useEffect(() => {
         fetchMovies()
-    }, [fetchMovies])
+        featchCategories()
+    }, [featchCategories, fetchMovies])
 
     return (
-        <MoviesContext.Provider value={{ movies: moviesData }}>
+        <MoviesContext.Provider value={{ movies: moviesData, categories: categoriesData }}>
             {children}
         </MoviesContext.Provider>
     )
@@ -42,3 +50,4 @@ const useMovies = (): MovieContext => {
 }
 
 export { MoviesProvider, useMovies };
+

@@ -4,6 +4,7 @@ export interface Movie {
     backdrop_path: string;
     overview: string;
     release_date: string
+    genre_ids: number[]
 }
 
 export interface MovieContext {

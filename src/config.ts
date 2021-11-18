@@ -5,11 +5,13 @@ const POPULAR_URL = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US`
 const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p';
 const BACKDROP_SIZE = 'w1280';
 
+const CATEGORIES_URL = `${API_URL}/genre/movie/list?api_key=${API_KEY}&language=pt-BR`
 
 
 export {
     API_URL,
     POPULAR_URL,
     IMAGE_BASE_URL,
-    BACKDROP_SIZE
+    BACKDROP_SIZE,
+    CATEGORIES_URL
 }
