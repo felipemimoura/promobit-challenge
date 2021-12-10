@@ -10,6 +10,7 @@ const CATEGORIES_URL = `${API_URL}/genre/movie/list?api_key=${API_KEY}&language=
 
 export {
     API_URL,
+    API_KEY,
     POPULAR_URL,
     IMAGE_BASE_URL,
     BACKDROP_SIZE,
