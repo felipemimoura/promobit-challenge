@@ -6,25 +6,18 @@ import { GridProps } from './interface'
 import * as Styled from './styles'
 
 
-export const Grid: React.FC<GridProps> = ({ header, categorySelect }) => {
-    const { movies } = useMovies()
+export const Grid: React.FC<GridProps> = ({ header }) => {
+    const { movies, filterMoviesPerCategory, category } = useMovies()
     const [list, setList] = useState<Movie[]>([])
 
     useEffect(() => {
         if (!movies) {
             return
         }
+        const moviesPerCategory = filterMoviesPerCategory(movies, category)
 
-        if (categorySelect > 0) {
-            const categoryMovies = movies.filter((movie) => movie.genre_ids.find((genre) => genre === categorySelect))
-            setList(categoryMovies)
-            return
-        }
-
-        setList(movies)
-
-
-    }, [categorySelect, movies])
+        setList(moviesPerCategory)
+    }, [category, filterMoviesPerCategory, movies])
 
     return (
         <Styled.Wrapper>
