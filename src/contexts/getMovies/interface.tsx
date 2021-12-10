@@ -19,6 +19,8 @@ export interface MovieContext {
     movies: Movie[],
     categories: Categories[],
     category: number,
+    pages: number,
+    loadMorePages(nextPage: number): void
     selectedCategory(id: number): void
     filterMoviesPerCategory(movie: Movie[], id: number): Movie[]
 }
