@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useMovies } from '../../contexts/getMovies'
-import { Categories, SearchBarProps } from './interface'
+import { Categories } from './interface'
 import * as Styled from './styles'
 
-export const SearchBar: React.FC<SearchBarProps> = ({ handleSelectCategory, category }) => {
-    const { categories } = useMovies()
+export const SearchBar: React.FC = () => {
+    const { categories, category, selectedCategory } = useMovies()
     const [categoriesList, setCategoriesList] = useState<Categories[]>([])
     const [categorySelected, setCategorySelected] = useState(0)
-
-    const handleClickCategory = (id: number) => {
-        console.log(id)
-        handleSelectCategory(id)
-    }
+    const handleClickCategory = useCallback((id: number) => {
+        if (categorySelected === id) {
+            selectedCategory(0)
+            setCategorySelected(categorySelected)
+            return
+        }
+        selectedCategory(id)
+    }, [categorySelected, selectedCategory])
 
     useEffect(() => {
         setCategoriesList(categories)
@@ -22,7 +25,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({ handleSelectCategory, cate
         <Styled.Wrapper>
             <Styled.Content>
                 {categoriesList.map((category) => (<Styled.Button isSelected={category.id === categorySelected} key={category.id} onClick={() => handleClickCategory(category.id)}>{category.name} </Styled.Button>))}
-
             </Styled.Content>
         </Styled.Wrapper>
     )

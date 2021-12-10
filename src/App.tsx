@@ -1,11 +1,14 @@
 import React from 'react';
+import { Router } from './routes';
 
-import './App.css';
 
-function App() {
+export const App = () => {
   return (
-    <h1>Hello Word</h1>
+    <>
+      <Router />
+    </>
+
   );
 }
 
-export default App;
+
