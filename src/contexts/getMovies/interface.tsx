@@ -16,6 +16,9 @@ export interface CategoriesData {
     genres: Categories[]
 }
 export interface MovieContext {
-    movies: Movie[]
-    categories: Categories[]
+    movies: Movie[],
+    categories: Categories[],
+    category: number,
+    selectedCategory(id: number): void
+    filterMoviesPerCategory(movie: Movie[], id: number): Movie[]
 }

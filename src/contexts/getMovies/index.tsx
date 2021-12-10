@@ -9,6 +9,7 @@ const MoviesContext = createContext<MovieContext>({} as MovieContext)
 const MoviesProvider: React.FC = ({ children }) => {
     const [moviesData, setMoviesData] = useState<Movie[]>([])
     const [categoriesData, setCategoriesData] = useState<Categories[]>([])
+    const [category, setCategory] = useState(0)
 
     const fetchMovies = useCallback(async () => {
         const result = await getPopularMovies()
@@ -25,13 +26,33 @@ const MoviesProvider: React.FC = ({ children }) => {
         setCategoriesData(result.genres)
     }, [])
 
+
+
+    const filterMoviesPerCategory = useCallback((movies: Movie[], categoryId: number): Movie[] => {
+        let moviesList = moviesData
+        if (category === 0) {
+            setMoviesData(moviesData)
+            return moviesList
+        }
+
+        moviesList = movies.filter((movie) => movie.genre_ids.find((genre) => genre === categoryId))
+
+        return moviesList
+    }, [category, moviesData])
+
+    const selectedCategory = useCallback((id: number) => {
+        setCategory(id)
+
+        filterMoviesPerCategory(moviesData, id)
+    }, [filterMoviesPerCategory, moviesData])
+
     useEffect(() => {
         fetchMovies()
         featchCategories()
     }, [featchCategories, fetchMovies])
 
     return (
-        <MoviesContext.Provider value={{ movies: moviesData, categories: categoriesData }}>
+        <MoviesContext.Provider value={{ movies: moviesData, categories: categoriesData, selectedCategory, category, filterMoviesPerCategory }}>
             {children}
         </MoviesContext.Provider>
     )
