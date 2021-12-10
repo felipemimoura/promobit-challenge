@@ -4,7 +4,7 @@ import { Header } from '../components/Header'
 import { MoviesProvider } from '../contexts/getMovies'
 import { GlobalStyle } from '../GlobalStyle'
 import { Home } from '../pages/Home'
-import { Movie } from '../pages/Movie'
+import { MoviePage } from '../pages/Movie'
 
 export const Router = () => {
     return (
@@ -14,7 +14,7 @@ export const Router = () => {
                 <Header userName="Felipe Moura" />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/:movieId" element={<Movie />} />
+                    <Route path="/:id" element={<MoviePage />} />
                 </Routes>
             </MoviesProvider>
         </BrowserRouter>
