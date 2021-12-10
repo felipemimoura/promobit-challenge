@@ -9,5 +9,6 @@ export interface Movie {
 
 export interface MovieContext {
     page: number;
+    total_pages: number;
     results: Movie[]
 }

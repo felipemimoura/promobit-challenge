@@ -8,25 +8,20 @@ const MoviesContext = createContext<MovieContext>({} as MovieContext)
 
 const MoviesProvider: React.FC = ({ children }) => {
     const [moviesData, setMoviesData] = useState<Movie[]>([])
+    const [pages, setPages] = useState(1)
     const [categoriesData, setCategoriesData] = useState<Categories[]>([])
     const [category, setCategory] = useState(0)
 
     const fetchMovies = useCallback(async () => {
-        const result = await getPopularMovies()
-        if (result.page > 1) {
-            setMoviesData(state => [...state, ...result.results])
-            return
-        }
-        setMoviesData(result.results)
+        const result = await getPopularMovies(pages)
+        setMoviesData(state => [...state, ...result.results])
 
-    }, [])
+    }, [pages])
 
     const featchCategories = useCallback(async () => {
         const result = await getCategories()
         setCategoriesData(result.genres)
     }, [])
-
-
 
     const filterMoviesPerCategory = useCallback((movies: Movie[], categoryId: number): Movie[] => {
         let moviesList = moviesData
@@ -46,13 +41,17 @@ const MoviesProvider: React.FC = ({ children }) => {
         filterMoviesPerCategory(moviesData, id)
     }, [filterMoviesPerCategory, moviesData])
 
+    const loadMorePages = useCallback((nextPage: number) => {
+        setPages(nextPage)
+    }, [])
+
     useEffect(() => {
         fetchMovies()
         featchCategories()
     }, [featchCategories, fetchMovies])
 
     return (
-        <MoviesContext.Provider value={{ movies: moviesData, categories: categoriesData, selectedCategory, category, filterMoviesPerCategory }}>
+        <MoviesContext.Provider value={{ movies: moviesData, categories: categoriesData, pages, loadMorePages, selectedCategory, category, filterMoviesPerCategory }}>
             {children}
         </MoviesContext.Provider>
     )
