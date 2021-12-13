@@ -1,46 +1,63 @@
-# Getting Started with Create React App
+# Movie Challenger
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esse projeto foi desenvolvido com base no desafio do promobit para está listando os filmes poulares, consumindo a API do Movie DB.
+Você pode ver site publicado no seguinte endereço [SITE](https://hungry-ritchie-86e4f3.netlify.app)
 
-## Available Scripts
+## 🚀 Começando
 
-In the project directory, you can run:
+Para rodar esse projeto localmente, você deve realizar um clone dessa respositório
 
-### `yarn start`
+1) Abra seu terminal
+2) Rode o seguinte comando:
+```
+git clone https://github.com/felipemimoura/promobit-challenge.git
+```
+3) Aguarde do download do projeto
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 📋 Pré-requisitos
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+De que coisas você precisa para instalar o software e como instalá-lo?
 
-### `yarn test`
+```
+Git
+nodeJS
+VScode (outro editor de cógido)
+Yarn / NPM
+Navegador Moderno
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🔧 Instalação
 
-### `yarn build`
+Para instalar todas a dependências desse projeto. Dentro da pasta raiz rode ou seguintes comando no seu terminal
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+YARN ou NPM INSTALL
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Após instalar todas as depedência abra a pasta e na raiz do projeto crie um arquivo chamado .env. Dentro desse arquivo adicone sua chave da API obtida através do site [MOVIEDB](https://www.themoviedb.org) com o seguinte nome
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+REACT_APP_API_KEY=COLE A KEY AQUI
+```
+agora você pode rodar os seguintes comandos para iniciar o projeto
 
-### `yarn eject`
+```
+yarn start ou npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 📦 Desenvolvimento
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+O desenvolvimento desse projeto foi pensando sempre buscando um código limpo e de fácl manunteção
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🛠️ Construído com
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* [ReactJS](https://pt-br.reactjs.org) - O framework web usado
+* [yarn](https://yarnpkg.com) - Gerente de Dependência
+* [styled-components](https://styled-components.com) - Para dar estilos
+* [typescript](https://www.typescriptlang.org) - Para trazer tipos ao javascripit
+* [axios](https://axios-http.com) - Cliente HTTP para comunicação
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Autor
+---
+⌨️ Feito po [Felipe Moura](https://github.com/felipemimoura) 😊
