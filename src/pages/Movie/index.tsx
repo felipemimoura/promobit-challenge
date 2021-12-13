@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
+import { MovieInfo } from '../../components/MovieInfo'
 import { useMovieFetch } from '../../hooks/useMovieFetch'
 
 
 interface Movie {
+    id: number;
     title: string;
     release_date: string;
     overview: string;
@@ -28,9 +30,9 @@ export const MoviePage = () => {
     }, [id, movieData])
 
     return (
-        <div>
-            <p style={{ color: 'black' }}>{movieInfo && movieInfo.title}</p>
-        </div>
+        <>
+            <MovieInfo movie={movieInfo} />
+        </>
     )
 }
 
